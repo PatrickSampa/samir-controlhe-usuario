@@ -12,4 +12,4 @@ const routes = express();
 
 routes.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-export {routes};
+export default routes;
