@@ -9,6 +9,10 @@ export class PostgresUsersRepository implements IUsersRepository {
         const user = await this.repository().findOne({ cpf });
         return user;
     }
+    async findByUserName(userName: string): Promise<User> {
+        const user = await this.repository().findOne({ userName });
+        return user;
+    }
     async save(user: User): Promise<User> {
         return await this.repository().save(user);
     }

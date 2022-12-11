@@ -1,58 +1,28 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { CalculosLote } from "./CalculosLote";
-const { v4: uuid } = require("uuid");
-
-@Entity()
-export class User {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
-
-    @Column()
-    name: string;
-
-    @Column({ unique: true })
+export interface ICreateUserRequestDTO {
     userName: string;
-
-    @Column({ unique: true })
-    cpf: string;
-
-    @Column()
+    name: string;
+    cpf: string
     password: string;
+    passwordSapiens:string
 
-    @Column()
-    passwordSapiens: string;
-
-
-    @OneToMany(() => CalculosLote, calculosLote => calculosLote.idUser)
-    calculosLotes?: CalculosLote[];
-
-    constructor(props: Omit<User, "id">, id?: string) {
-        Object.assign(this, props);
-
-        if (!id) {
-            this.id = uuid();
-        } else {
-            this.id = id;
-        }
-    }
 }
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     User:
+ *     CreateUser:
  *       type: object
  *       required:
- *         - id
  *         - name
  *         - userName
  *         - cpf
  *         - password
+ *         - passwordSapiens
  *       properties:
  *         id:
  *           type: string
- *           description: The auto-generated id
+ *           description: The auto-generated id 
  *         name:
  *           type: string
  *           description: The user name
@@ -65,10 +35,14 @@ export class User {
  *         password:
  *           type: string
  *           description: TThe password for user authentication
+ *         passwordSapiens:
+ *           type: string
+ *           description: TThe password for user authentication in the Sapiens
  *       example:
  *         id: idUser
  *         name: Bruce Wayne
  *         userName: Batman
  *         cpf: 2127337298
  *         password: Senhasenh4
+ *         passwordSapiens: Senhasenh4
  */
