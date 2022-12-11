@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { refreshToken } from "../auth";
+import { refreshTokenController } from "../modules/RefreshToken";
 
 export const routerAuth = Router();
 
@@ -41,5 +41,5 @@ export const routerAuth = Router();
  */
 
 routerAuth.post("/", (req, res) => {
-    return refreshToken.execute(req, res);
+    return refreshTokenController.execute(req, res);
 })

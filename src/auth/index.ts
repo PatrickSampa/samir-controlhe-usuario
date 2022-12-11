@@ -1,7 +1,6 @@
 import { CreateToken } from './CreateToken';
 import { EncryptPassword } from './EncryptPassword';
 import { IdetificationUser } from './IdentificationUser';
-import { RefreshToken } from './RefreshToken';
 import { VerifyPassword } from './VerifyPassword';
 import { VerifyToken } from './VerifyToken';
 
@@ -11,10 +10,8 @@ const encryptPassword = new EncryptPassword();
 
 const idetificationUser = new IdetificationUser();
 
-const refreshToken = new RefreshToken();
-
 const verifyPassword = new VerifyPassword();
 
 const verifyToken = new VerifyToken();
 
-export {createToken, encryptPassword, idetificationUser, refreshToken, verifyPassword, verifyToken};
+export { createToken, encryptPassword, idetificationUser, verifyPassword, verifyToken };
