@@ -25,11 +25,11 @@ describe("Get user", () => {
         )
         connections = await createConnection()
 
-        const user = await createUserUseCase.execute(userData);
+        const user = await createUserUseCase.handle(userData);
         idUser = user.id;
     });
     it("Should Return The User", async () => {
-        expect((await getUser.execute(idUser))).toHaveProperty("id", idUser);
+        expect((await getUser.handle(idUser))).toHaveProperty("id", idUser);
 
     });
 });

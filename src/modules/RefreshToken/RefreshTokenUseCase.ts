@@ -8,8 +8,8 @@ export class RefreshTokenUseCase {
         private ISSUE: string,
         private AUTHSERVE: string,
         private REFRESH_SECRET: string,) { }   
-         
-        async execute(data: RefreshToken): Promise<Token> {
+
+        async handle(data: RefreshToken): Promise<Token> {
         
         if (!data.refreshToken) {
             throw new Error("Access denied");

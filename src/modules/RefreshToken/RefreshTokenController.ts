@@ -10,7 +10,7 @@ export class RefreshTokenController {
     async execute(request: Request, response: Response): Promise<Response> {
         const data: RefreshToken = request.body;
         try {
-           const result = await this.RefreshToken.execute(data);
+           const result = await this.RefreshToken.handle(data);
             return response.status(200).send(result)
         } catch (error) {
             if (error.message == "Access denied"){

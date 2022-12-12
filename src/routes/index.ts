@@ -3,6 +3,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 import { Options } from '../config/swagger';
 import { routerAuth } from './Auth.routes';
+import { routerCalculoLote } from './CalculoLote.routes';
 import { routerUser } from './User.routes';
 
 
@@ -17,5 +18,7 @@ routes.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 routes.use("/auth", routerAuth);
 
 routes.use("/users", routerUser);
+
+routes.use("/calculoLote", routerCalculoLote);
 
 export default routes;

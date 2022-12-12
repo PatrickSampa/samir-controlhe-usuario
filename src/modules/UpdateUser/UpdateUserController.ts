@@ -11,7 +11,7 @@ export class UpdateUserController {
         const body: IUpdateUserRequestDTO = request.body;
         try {
             body.id = await idetificationUser.execute(request);
-            const result = await this.updateUserUseCase.execute(body);
+            const result = await this.updateUserUseCase.handle(body);
             return response.status(200).send(result);
         } catch (error) {
             return response.status(400).json({

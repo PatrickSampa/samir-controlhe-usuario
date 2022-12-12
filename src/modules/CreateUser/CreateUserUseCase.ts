@@ -9,7 +9,7 @@ export class CreateUserUseCase {
     ) {
         this.usersRepository = usersRepository;
     }
-    async execute(data: ICreateUserRequestDTO): Promise<User> {
+    async handle(data: ICreateUserRequestDTO): Promise<User> {
         const userAlreadyExists = await this.usersRepository.findByCpf(data.cpf) || await this.usersRepository.findByUserName(data.userName);
         if (userAlreadyExists) {
             throw new Error("User already exits!");

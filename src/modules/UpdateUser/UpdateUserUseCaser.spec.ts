@@ -25,7 +25,7 @@ describe("Update user", () => {
         )
         connections = await createConnection()
 
-        const user = await createUserUseCase.execute(userData);
+        const user = await createUserUseCase.handle(userData);
         idUser = user.id;
     });
     it("Should Update The User", async () => {
@@ -35,7 +35,7 @@ describe("Update user", () => {
             password: "TestUpdateUser",
             id: idUser
         }
-        const Update = updateUserUseCase.execute(userUpdate);
+        const Update = updateUserUseCase.handle(userUpdate);
         expect((await Update).id).toEqual(idUser);
         expect((await Update).name).toEqual(userUpdate.name);
         expect((await Update).email).toEqual(userUpdate.email);
@@ -48,6 +48,6 @@ describe("Update user", () => {
             id: idUser + "test"
         }
 
-        await expect(updateUserUseCase.execute(userUpdate)).rejects.toEqual(new Error("Invalid id!"));
+        await expect(updateUserUseCase.handle(userUpdate)).rejects.toEqual(new Error("Invalid id!"));
     });
 });

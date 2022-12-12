@@ -24,16 +24,14 @@ export const routerAuth = Router();
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Token'
+ *             $ref: '#/components/schemas/RefreshToken'
  *     responses:
  *       200:
  *         description: The category was successfully created
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Token'
+ *               $ref: '#/components/schemas/Token'
  *       500:
  *         description: Some server error
  *       401:

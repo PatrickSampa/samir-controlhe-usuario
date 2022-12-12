@@ -8,7 +8,7 @@ export class GetUser {
     ) {
         this.usersRepository = usersRepository;
     }
-    async execute(idUser: string): Promise<User> {
+    async handle(idUser: string): Promise<User> {
         const user = await this.usersRepository.findById(idUser);
         user.password = "";
         return user;

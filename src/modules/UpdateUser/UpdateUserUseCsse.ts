@@ -10,7 +10,7 @@ export class UpdateUserUseCase {
     ) {
         this.usersRepository = usersRepository;
     }
-    async execute(data: IUpdateUserRequestDTO): Promise<User> {
+    async handle(data: IUpdateUserRequestDTO): Promise<User> {
         var UserDB: User;
         try {
             UserDB = await this.usersRepository.findById(data.id);

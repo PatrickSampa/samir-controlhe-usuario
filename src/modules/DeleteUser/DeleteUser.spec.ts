@@ -26,15 +26,15 @@ describe("Update user", () => {
 
         deleteUser = new DeleteUser(postgresUsersRepository);
 
-        const user = await createUserUseCase.execute(userData);
+        const user = await createUserUseCase.handle(userData);
         idUser = user.id;
     });
     it("Should Delete The User", async () => {
-        const result = await deleteUser.execute(idUser);
+        const result = await deleteUser.handle(idUser);
         expect(result).toHaveProperty("affected", 1);
     });
     it("Should Delete Failed", async () => {
         const idInvalid = idUser + "test";
-        await expect(deleteUser.execute(idInvalid)).rejects.toEqual(new Error("Failed to delete!"));
+        await expect(deleteUser.handle(idInvalid)).rejects.toEqual(new Error("Failed to delete!"));
     });
 });

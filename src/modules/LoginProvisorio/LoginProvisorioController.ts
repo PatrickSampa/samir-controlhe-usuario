@@ -1,19 +1,15 @@
 import { Request, Response } from "express";
-import { LoginUseCase } from "./LoginUseCase";
+import { ILoginProvissorioRequestDTO } from "../../DTO/LoginProvissorioDTO";
+import { LoginProvisorioUseCase } from "./LoginProvisorioUseCase";
 
-export class LoginUserController {
+export class LoginProvisorioController {
     constructor(
-        private loginUser: LoginUseCase,
+        private loginUser: LoginProvisorioUseCase,
     ) { }
     async execute(request: Request, response: Response): Promise<Response> {
-        const {userName, password } = request.body;
+        const body: ILoginProvissorioRequestDTO = request.body;
         try {
-           const result = await this.loginUser.handle(
-                {
-                    userName,
-                    password,
-                }
-            );
+           const result = await this.loginUser.handle(body);
             return response.status(200).send(result)
         } catch (error) {
             return response.status(400).json({

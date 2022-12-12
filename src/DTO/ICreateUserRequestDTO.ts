@@ -42,7 +42,7 @@ export interface ICreateUserRequestDTO {
  *         id: idUser
  *         name: Bruce Wayne
  *         userName: Batman
- *         cpf: 2127337298
+ *         cpf: "02127337298"
  *         password: Senhasenh4
  *         passwordSapiens: Senhasenh4
  */

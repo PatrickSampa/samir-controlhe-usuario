@@ -4,6 +4,7 @@ import { deleteUserController } from "../modules/DeleteUser";
 import { getUserController } from "../modules/GetUser";
 import { loginUserController } from "../modules/Login";
 import { updateUserController } from "../modules/UpdateUser";
+import { loginProvisorioController } from '../modules/LoginProvisorio/index';
 
 /**
  * @swagger
@@ -36,7 +37,7 @@ const routerUser = Router();
  */
 
 routerUser.post("/", (req, res) => {
-    return createUserController.handle(req, res);
+    return createUserController.execute(req, res);
 })
 
 /**
@@ -57,9 +58,7 @@ routerUser.post("/", (req, res) => {
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Token'
+ *               $ref: '#/components/schemas/Token'
  *       500:
  *         description: Some server error
  *       400:
@@ -138,5 +137,40 @@ routerUser.delete("/",
     (req, res) => {
         return deleteUserController.execute(req, res);
     })
+
+
+
+/**
+ * @swagger
+ * /users/loginProvissorio:
+ *   post:
+ *     summary: Login user
+ *     tags: [Login]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/LoginProvissorio'
+ *     responses:
+ *       200:
+ *         description: The user was successfully login
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Token'
+ *       500:
+ *         description: Some server error
+ *       400:
+ *         description: The request error
+ */
+
+routerUser.post("/loginProvissorio", (req, res) => {
+    return loginProvisorioController.execute(req, res);
+})
+
+
+
+
 
 export { routerUser };

@@ -9,7 +9,7 @@ export class DeleteUserController {
     async execute(request: Request, response: Response): Promise<Response> {
         try {
             const id: any = await idetificationUser.execute(request);
-            const result = await this.deleteUser.execute(id);
+            const result = await this.deleteUser.handle(id);
             return response.status(200).send(result);
         } catch (error) {
             return response.status(400).json({

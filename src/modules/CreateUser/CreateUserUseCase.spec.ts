@@ -22,7 +22,7 @@ describe("Create user", () => {
             email: "test@test.com.br",
             password: "testusername",
         });
-        const user = await createUserUseCase.execute(userData);
+        const user = await createUserUseCase.handle(userData);
         expect(user).toHaveProperty("id");
     });
     it("Should not be able to create an existing user", async () => {
@@ -31,8 +31,8 @@ describe("Create user", () => {
             email: "testExisting@test.com.br",
             password: "testExistin",
         });
-        await createUserUseCase.execute(userData);
-        await expect(createUserUseCase.execute(userData)).rejects.toEqual(
+        await createUserUseCase.handle(userData);
+        await expect(createUserUseCase.handle(userData)).rejects.toEqual(
             new Error("User already exits!")
         );
     });

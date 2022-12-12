@@ -7,5 +7,6 @@ export interface ICalculosLoteRepository {
     save(calculosLote: CalculosLote): Promise<CalculosLote>;
     findById(id: string): Promise<CalculosLote>;
     delete(id: string): Promise<DeleteResult>;
+    deleteAll(idUser: User): Promise<DeleteResult>; 
     repository();
 }

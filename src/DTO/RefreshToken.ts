@@ -6,7 +6,7 @@ export interface RefreshToken {
  * @swagger
  * components:
  *   schemas:
- *     Token:
+ *     RefreshToken:
  *       type: object
  *       required:
  *         - refreshToken

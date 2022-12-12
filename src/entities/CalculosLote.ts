@@ -162,7 +162,7 @@ export class CalculosLote {
     @JoinColumn()
     idUser: User;
 
-    constructor(props: Omit<User, "id">, id?: string) {
+    constructor(props: Omit<CalculosLote, "id">, id?: string) {
         Object.assign(this, props);
 
         if (!id) {

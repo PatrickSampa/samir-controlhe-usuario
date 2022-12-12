@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
 import { idetificationUser } from "../../auth";
-import { GetUser } from "./GetUser";
+import { DeleteAllCalculoLoteUseCase } from "./DeleteAllCalculoLoteUseCase";
 
-export class GetUserController {
+export class DeleteAllCalculoLoteController {
     constructor(
-        private getUser: GetUser,
+        private deleteAllCalculoLoteUseCase: DeleteAllCalculoLoteUseCase,
     ) { }
     async execute(request: Request, response: Response): Promise<Response> {
         try {
             const idUser: any = await idetificationUser.execute(request);
-            const result = await this.getUser.handle(idUser);
-            return response.status(200).send(result);
+            const newCalculosLote = await this.deleteAllCalculoLoteUseCase.handle(
+                idUser
+            );
+            return response.status(200).json(newCalculosLote);
         } catch (error) {
             return response.status(400).json({
                 message: error.message || "Unexpected error"

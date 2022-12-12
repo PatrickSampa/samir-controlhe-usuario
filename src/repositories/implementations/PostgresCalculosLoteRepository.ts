@@ -3,7 +3,7 @@ import { CalculosLote } from "../../entities/CalculosLote";
 import { User } from "../../entities/User";
 import { ICalculosLoteRepository } from "../ICalculosLoteRepository";
 
-export class PostgresCategoryRepository implements ICalculosLoteRepository {
+export class PostgresCalculosLoteRepository implements ICalculosLoteRepository {
     async save(calculosLote: CalculosLote) {
         return this.repository().save(calculosLote);
     }
@@ -18,6 +18,9 @@ export class PostgresCategoryRepository implements ICalculosLoteRepository {
     async delete(id: string): Promise<DeleteResult> {
         return await this.repository().delete(id);
     }
+    async deleteAll(idUser: User): Promise<DeleteResult> {
+        return await this.repository().delete({ idUser})
+     }   
     repository() {
         return getRepository(CalculosLote);
     }

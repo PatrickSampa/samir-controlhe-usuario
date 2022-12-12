@@ -6,10 +6,10 @@ export class CreateUserController {
     constructor(
         private createUserUseCase: CreateUserUseCase,
     ) { }
-    async handle(request: Request, response: Response): Promise<Response> {
+    async execute(request: Request, response: Response): Promise<Response> {
         const data: ICreateUserRequestDTO = request.body;
         try {
-            const newUser = await this.createUserUseCase.execute(
+            const newUser = await this.createUserUseCase.handle(
                 data
             );
             return response.status(201).json(newUser);

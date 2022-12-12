@@ -8,7 +8,7 @@ export class DeleteUser {
     ) {
         this.usersRepository = usersRepository;
     }
-    async execute(id: string): Promise<DeleteResult> {
+    async handle(id: string): Promise<DeleteResult> {
         try {
             return await this.usersRepository.delete(id);   
         } catch (error) {
