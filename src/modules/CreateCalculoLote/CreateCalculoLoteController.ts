@@ -17,6 +17,7 @@ export class CreateCalculoLoteController {
             );
             return response.status(201).json(newCalculosLote);
         } catch (error) {
+            console.log(error.message);
             return response.status(400).json({
                 message: error.message || "Unexpected error"
             });

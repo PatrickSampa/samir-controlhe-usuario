@@ -1,4 +1,5 @@
 import express from 'express';
+import { verifyToken } from '../auth';
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 import { Options } from '../config/swagger';
@@ -19,6 +20,9 @@ routes.use("/auth", routerAuth);
 
 routes.use("/users", routerUser);
 
-routes.use("/calculoLote", routerCalculoLote);
+routes.use("/calculoLote",
+(req, res, next) => {
+    return verifyToken.execute(req, res, next);
+}, routerCalculoLote);
 
 export default routes;

@@ -5,7 +5,7 @@ export interface ICreateCalculoLoteRequestDTO {
     nome: string;
     dataDeAjuizamento: string;
     cpf: string;
-    termoInicia: string;
+    termoInicial: string;
     termoFinal: string
     rmi: number;
     beneficio: string;
@@ -19,7 +19,7 @@ export interface ICreateCalculoLoteRequestDTO {
     dataFinalBeneficioAcumulado?: string[];
     rmilBeneficioAcumulado?: string[];
     inicioJuros: string;
-    dib: string;
+    dib?: string;
     salario13Obrigatorio: boolean;
     data: string[];
     reajusteAcumulado: number[];
@@ -43,11 +43,11 @@ export interface ICreateCalculoLoteRequestDTO {
     competenciaAnoAnterior: number
     competenciaAnoAtual: number
     porcentagemRMI: number;
-    honorarioAdvocativosData: string
-    honorariosAdvocativos: number;
-    textoHonorarios: string;
-    decricaoJuros: string;
-    descricaoCorrecao: string
+    honorarioAdvocativosData?: string
+    honorariosAdvocativos?: number;
+    textoHonorarios?: string;
+    decricaoJuros?: string;
+    descricaoCorrecao?: string
     alcadaValor: number
     salariominimosAlcada: number
     alcadaJuros: number
@@ -74,6 +74,7 @@ export interface ICreateCalculoLoteRequestDTO {
     salario13BeneficioAcumulado?: boolean[];
     salarioMinimoBeneficioAcumulado?: boolean[];
     limiteMinimoMaximoBeneficioAcumulado?: boolean[];
+    selic?: boolean;
     conteudoHTML: string;
     idUser: User;
 

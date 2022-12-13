@@ -144,7 +144,7 @@ routerUser.delete("/",
  * @swagger
  * /users/loginProvissorio:
  *   post:
- *     summary: Login user
+ *     summary: Login user provissorio
  *     tags: [Login]
  *     requestBody:
  *       required: true

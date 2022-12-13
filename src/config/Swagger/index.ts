@@ -10,7 +10,7 @@ const urlDOCKER = `http://localhost:${DOCKER_PORT}`
 export const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-      title: 'API Equity-Wallet',
+      title: 'API Samir-Controlhe-Usuario',
       version: '1.0.0',
       description:
         'This is a REST API application made with Express, TypeORM, Swagger, Bcrypt, Json Web Token, PostgreSQL, UUID, Jest and Supertest. API responsible for controlling access to the samir system',
