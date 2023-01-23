@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { CalculosLote } from "./CalculosLote";
+import { InformationsForCalcule } from "./InformationForCalcule";
 const { v4: uuid } = require("uuid");
 
 @Entity()
@@ -25,6 +26,8 @@ export class User {
 
     @OneToMany(() => CalculosLote, calculosLote => calculosLote.idUser)
     calculosLotes?: CalculosLote[];
+    @OneToMany(() => InformationsForCalcule, informationsForCalcule => informationsForCalcule.idUser)
+    informationsForCalcule?: InformationsForCalcule[];
 
     constructor(props: Omit<User, "id">, id?: string) {
         Object.assign(this, props);
