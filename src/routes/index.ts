@@ -2,10 +2,11 @@ import express from 'express';
 import { verifyToken } from '../auth';
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-import { Options } from '../config/swagger';
 import { routerAuth } from './Auth.routes';
 import { routerCalculoLote } from './CalculoLote.routes';
 import { routerUser } from './User.routes';
+import { routerInformationsForCalcule } from './InformationsForCalcule.routes';
+import { Options } from '../config/Swagger';
 
 
 const swaggerSpec = swaggerJSDoc(Options);
@@ -24,5 +25,10 @@ routes.use("/calculoLote",
 (req, res, next) => {
     return verifyToken.execute(req, res, next);
 }, routerCalculoLote);
+
+routes.use("/informationsForCalcule",
+(req, res, next) => {
+    return verifyToken.execute(req, res, next);
+}, routerInformationsForCalcule);
 
 export default routes;

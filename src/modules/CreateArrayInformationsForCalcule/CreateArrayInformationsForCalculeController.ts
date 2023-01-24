@@ -1,20 +1,23 @@
 import { Request, Response } from "express";
-import { CreateInformationsForCalculeUseCase } from "./CreateInformationsForCalculeUseCase";
+import { CreateArrayInformationsForCalculeUseCase } from "./CreateArrayInformationsForCalculeUseCase";
 import { ICreateInformationsForCalculeDTO } from "../../DTO/ICreateInformationsForCalculeDTO";
 import { idetificationUser } from "../../auth";
 import { transformçaoDeArrayAnyParaArrayDeStrng } from "../../helps/ConvertoJSON";
 
-export class CreateInformationsForCalculeController {
+export class CreateArrayInformationsForCalculeController {
     constructor(
-        private createInformationsForCalculeUseCase: CreateInformationsForCalculeUseCase,
+        private useCase: CreateArrayInformationsForCalculeUseCase,
     ) { }
     async execute(request: Request, response: Response): Promise<Response> {
-        request.body.beneficiosAcumulados = await transformçaoDeArrayAnyParaArrayDeStrng(request.body.beneficiosAcumulados);
-        const data: ICreateInformationsForCalculeDTO = request.body;
+        var data: ICreateInformationsForCalculeDTO[] = [];    
         try {
             const idUser: any = await idetificationUser.execute(request);
-            data.idUser = idUser;
-            const newCalculosLote = await this.createInformationsForCalculeUseCase.handle(
+            await request.body.forEach( async element => {
+                element.beneficiosAcumulados = await transformçaoDeArrayAnyParaArrayDeStrng(request.body.beneficiosAcumulados);  
+                element.idUser = idUser;
+                data.push(element);
+              });
+            const newCalculosLote = await this.useCase.handle(
                 data
             );
             return response.status(201).json(newCalculosLote);

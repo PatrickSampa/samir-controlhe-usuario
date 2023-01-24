@@ -1,5 +1,4 @@
 import { Column,Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { BeneficiosAcumuladoForCalcule } from "./BeneficiosAcumuladoForCalcule";
 import { User } from './User';
 
 @Entity()
@@ -26,12 +25,12 @@ export class InformationsForCalcule {
     nb: string
     @Column()
     dip: string
-    @Column()
+    @Column({nullable: true})
     aps?: string
-    @Column()
+    @Column({nullable: true})
     citacao?: string
-    @Column(type => BeneficiosAcumuladoForCalcule)
-    beneficiosAcumulados?: BeneficiosAcumuladoForCalcule[]
+    @Column("text", { array: true, nullable: true})
+    beneficiosAcumulados?: string[]
     @Column()
     urlProcesso: string
     @Column()

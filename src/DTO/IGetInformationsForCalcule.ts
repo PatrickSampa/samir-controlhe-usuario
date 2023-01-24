@@ -1,7 +1,8 @@
 import { BeneficiosAcumuladoForCalcule } from "../entities/BeneficiosAcumuladoForCalcule";
 import { User } from "../entities/User";
 
-export interface ICreateInformationsForCalculeDTO {
+export interface IGetInformationsForCalcule {
+    id: number;
     numeroDoProcesso: string,
     nome: string,
     dataAjuizamento: string,
@@ -14,7 +15,7 @@ export interface ICreateInformationsForCalculeDTO {
     dip: string,
     aps?: string,
     citacao?: string,
-    beneficiosAcumulados?:string[],
+    beneficiosAcumulados?:BeneficiosAcumuladoForCalcule[] | string[],
     urlProcesso: string,
     dibAnterior: string,
     beneficioAcumuladoBoolean: boolean,
