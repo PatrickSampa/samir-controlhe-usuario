@@ -2,6 +2,8 @@ import { Router } from "express";
 import { createinformationsForCalculeController } from "../modules/CreateInformationsForCalcule";
 import { getInformationsForCalculeController } from "../modules/GetInformationsForCalcule";
 import { createArrayInformationsForCalculeController } from "../modules/CreateArrayInformationsForCalcule";
+import { deleteAllInformationsForCalculeController } from "../modules/DeleteAllInformationsForCalcule";
+import { deleteInformationsForCalculeController } from "../modules/DeleteInformationsForCalcule";
 
 
 
@@ -22,17 +24,17 @@ routerInformationsForCalcule.get("/", (req, res) => {
 })
 
 
-// routerInformationsForCalcule.delete("/",
-//     (req, res) => {
-//         return deleteAllCalculoLoteController.execute(req, res);
-//     })
+routerInformationsForCalcule.delete("/",
+    (req, res) => {
+        return deleteAllInformationsForCalculeController.execute(req, res);
+    })
 
 
 
-// routerInformationsForCalcule.delete("/:id",
-//     (req, res) => {
-//         return deleteCalculoLoteController.execute(req, res);
-//     })
+routerInformationsForCalcule.delete("/:id",
+    (req, res) => {
+        return deleteInformationsForCalculeController.execute(req, res);
+    })
 
 
 

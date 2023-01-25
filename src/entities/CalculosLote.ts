@@ -30,7 +30,7 @@ export class CalculosLote {
     dataDePagamento: string;
     @Column()
     citacao: string;
-    @Column()
+    @Column({nullable: true})
     aps: string;
     @Column()
     recebeuBeneficio: boolean;
