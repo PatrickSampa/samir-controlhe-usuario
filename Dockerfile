@@ -1,3 +1,5 @@
-FROM node as build-deps
+FROM node:18
 WORKDIR /usr/samir-controlhe-usuario
-CMD yarn start:docker
+COPY . .
+RUN yarn 
+CMD yarn serve
